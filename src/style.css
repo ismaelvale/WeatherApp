@@ -1,0 +1,16 @@
+:root {
+    --weather-image: none;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+body ::before {
+    content: "";
+    background-image: var(--weather-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    position: absolute;
+}
