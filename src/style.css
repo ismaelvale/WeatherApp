@@ -14,3 +14,53 @@ body ::before {
     opacity: 0.25;
     position: absolute;
 }
+
+#UI {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: 
+    ". search search ."
+    ". cityname cityname ."
+    "snapshot . . atmospheric"
+    ". fivedaytitle fivedaytitle ."
+    ". fiveday fiveday ."
+    "hourlytitle hourlytitle . ."
+    "hourly hourly hourly hourly"
+    ". footer footer .";
+
+}
+
+#cityName {
+    grid-area: cityname;
+    text-align: center;
+
+}
+
+#snapshot {
+    grid-area: snapshot;
+    display: block;
+    text-align: left;
+}
+
+#hourly {
+    grid-area: hourly;
+    display: flex;
+    justify-content: space-around;
+}
+
+#fiveday {
+    grid-area: fiveday;
+    display: flex;
+    justify-content: space-around;
+}
+
+#fiveday_title {
+    grid-area: fivedaytitle;
+    margin-top: 10%;
+}
+
+#hourly_title {
+    grid-area: hourlytitle;
+    margin-top: 5%;
+}
