@@ -1,5 +1,5 @@
 import './style.css';
-import {getWeatherMetric, getWeatherImperial, getWeatherPreload} from './API';
+import {getWeatherMetric, getWeatherImperial, getWeatherPreload, imperialPreLoad} from './API';
 
 const bgImage = document.querySelector('.bg-img');
 const UI = document.querySelector('#UI');
@@ -28,4 +28,9 @@ function bgSet() {
 document.addEventListener('load', navigator.geolocation.getCurrentPosition(getWeatherPreload));
 bgSet();
 metric.addEventListener('click', getWeatherMetric);
-imperial.addEventListener('click', getWeatherImperial);
+imperial.addEventListener('click', e => { if(city.value === ''){
+    navigator.geolocation.getCurrentPosition(imperialPreLoad);
+} else {
+    getWeatherImperial();
+}
+});
