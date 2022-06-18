@@ -18,7 +18,7 @@ export async function getWeatherMetric() {
     try {
         hourlyLabel.innerHTML = `<h2>12 Hour Forecast<h2>`;
         fiveDayLabel.innerHTML = `<h2>5 Day Outlook</h2>`;
-        const geoCode = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q='${city.value}','${country.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
+        const geoCode = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q='${city.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
         const coordinates = await geoCode.json();
         const lat = await coordinates[0].lat;
         const lon = await coordinates[0].lon;
@@ -55,14 +55,20 @@ export async function getWeatherMetric() {
             spanDay.classList.add('day');
             fiveDay.appendChild(spanDay);
         });
-        cityTitle.innerHTML = `<h1>${city.value}, ${country.value}<h1>`;
+        const GEOCODING = await fetch('https://www.mapquestapi.com/geocoding/v1/reverse?key=cJln77H3bnp4cNucmHd0ER4t1Y3WInJk&location=' + lat + '%2C' + lon + '&outFormat=json&thumbMaps=false');
+        const country = await GEOCODING.json();
+        if(country.results[0].locations[0].adminArea1 == 'US'){
+            cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea4}, ${country.results[0].locations[0].adminArea3}<h1>`;
+        } else {
+            cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea3}, ${country.results[0].locations[0].adminArea1}<h1>`;
+        };
         image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}C';
         description.innerHTML = conditionsDescription;
         feel.innerHTML = 'Feels Like: ' + feels_like + '\u{00B0}C';
         sunrise.innerHTML = 'Sunrise: ' + sunUp;
         sunset.innerHTML = 'Sunset: ' + sunDown;
-        console.log(rawData, currentTemp, conditionsDescription, hourlyData, fiveDayData, sunUp);
+        console.log(rawData, currentTemp, conditionsDescription, hourlyData, fiveDayData, country);
     } catch (err) {
         console.log(err);
     }
@@ -72,7 +78,7 @@ export async function getWeatherImperial() {
     try {
         hourlyLabel.innerHTML = `<h2>12 Hour Forecast<h2>`;
         fiveDayLabel.innerHTML = `<h2>5 Day Outlook</h2>`;
-        const geoCode = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q='${city.value}','${country.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
+        const geoCode = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q='${city.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
         const coordinates = await geoCode.json();
         const lat = await coordinates[0].lat;
         const lon = await coordinates[0].lon;
@@ -109,7 +115,13 @@ export async function getWeatherImperial() {
             spanDay.classList.add('day');
             fiveDay.appendChild(spanDay);
         });
-        cityTitle.innerHTML = `<h1>${city.value}, ${country.value}<h1>`;
+        const GEOCODING = await fetch('https://www.mapquestapi.com/geocoding/v1/reverse?key=cJln77H3bnp4cNucmHd0ER4t1Y3WInJk&location=' + lat + '%2C' + lon + '&outFormat=json&thumbMaps=false');
+        const country = await GEOCODING.json();
+        if(country.results[0].locations[0].adminArea1 == 'US'){
+            cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea4}, ${country.results[0].locations[0].adminArea3}<h1>`;
+        } else {
+            cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea3}, ${country.results[0].locations[0].adminArea1}<h1>`;
+        };
         image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}F';
         description.innerHTML = conditionsDescription;
@@ -162,7 +174,11 @@ export async function getWeatherPreload(pos) {
         temp.innerHTML = currentTemp + '\u{00B0}C';
         description.innerHTML = conditionsDescription;
         feel.innerHTML = 'Feels Like: ' + feels_like + '\u{00B0}C';
-        cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea3}, ${country.results[0].locations[0].adminArea1}<h1>`;
+        if(country.results[0].locations[0].adminArea1 == 'US'){
+            cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea4}, ${country.results[0].locations[0].adminArea3}<h1>`;
+        } else {
+            cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea3}, ${country.results[0].locations[0].adminArea1}<h1>`;
+        };
         hourlyLabel.innerHTML = `<h2>12 Hour Forecast<h2>`;
         fiveDayLabel.innerHTML = `<h2>5 Day Outlook</h2>`;
         sunrise.innerHTML = 'Sunrise: ' + sunUp;
