@@ -1,66 +1,142 @@
-:root {
-    --weather-image: none;
+@font-face {
+    font-family: 'NotoSans';
+    src: url('./NotoSans-Regular.ttf') format('ttf'),
+      url('./NotoSans-Bold.ttf') format('ttf'),
+      url('./NotoSans-Italic.ttf') format('ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'NotoSans', sans-serif;
 }
 
 body {
     min-height: 100vh;
-    position: relative;
+    text-align: center;
+    overflow: hidden;
+    font-size: 1.2rem;
 }
-body ::before {
-    content: "";
-    background-image: var(--weather-image);
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.25;
+
+.bg-img {
     position: absolute;
+    opacity: 0.75;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
 }
 
 #UI {
     display: grid;
+    position: relative;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     grid-template-areas: 
-    ". search search ."
-    ". cityname cityname ."
-    "snapshot . . atmospheric"
+    "MI . . search"
+    "snapshot cityname cityname atmospheric"
     ". fivedaytitle fivedaytitle ."
     ". fiveday fiveday ."
-    "hourlytitle hourlytitle . ."
+    ". hourlytitle hourlytitle ."
     "hourly hourly hourly hourly"
     ". footer footer .";
 
 }
 
+#tempchange {
+    grid-area: MI;
+    display: flex;
+    margin: 0;
+}
+
+#search {
+    grid-area: search;
+    align-items: stretch;
+}
+
 #cityName {
     grid-area: cityname;
     text-align: center;
-
+    margin-top: 1rem;
+    font-size: 1.5rem;
 }
 
 #snapshot {
     grid-area: snapshot;
-    display: block;
-    text-align: left;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    margin-left: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border: solid black 1px;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    background-color: rgba(183, 177, 177, 0.5);
+}
+
+#current-temp {
+    font-size: 2.5rem;
+}
+
+#atmospheric {
+    grid-area: atmospheric;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    margin-right: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border: solid black 1px;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    background-color: rgba(183, 177, 177, 0.5);
 }
 
 #hourly {
     grid-area: hourly;
     display: flex;
     justify-content: space-around;
+    margin: .75rem;
+    border: solid black 1px;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    background-color: rgba(183, 177, 177, 0.5);
 }
 
 #fiveday {
     grid-area: fiveday;
     display: flex;
     justify-content: space-around;
+    margin: 1rem;
+    border: solid black 1px;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    background-color: rgba(183, 177, 177, 0.5);
 }
 
 #fiveday_title {
     grid-area: fivedaytitle;
-    margin-top: 10%;
+    margin-top: .5rem;
 }
 
 #hourly_title {
     grid-area: hourlytitle;
-    margin-top: 5%;
+    margin-top: .5rem;
+}
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: .8rem;
 }
