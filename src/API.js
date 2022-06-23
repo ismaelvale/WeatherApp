@@ -72,10 +72,10 @@ export async function getWeatherMetric() {
         };
         image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}C';
-        description.innerHTML = conditionsDescription;
-        feel.innerHTML = 'Feels Like: ' + feels_like + '\u{00B0}C';
-        sunrise.innerHTML = 'Sunrise: ' + sunUp;
-        sunset.innerHTML = 'Sunset: ' + sunDown;
+        description.innerHTML = conditionsDescription.toUpperCase();
+        feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}C';
+        sunrise.innerHTML = 'SUNRISE: ' + sunUp;
+        sunset.innerHTML = 'SUNSET: ' + sunDown;
         UI.classList.remove('hidden');
         for (let i = 0; i < UI.children.length; i++) {
             let child = UI.children[i];
@@ -206,8 +206,8 @@ export async function getWeatherPreload(pos) {
         });
         image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}C';
-        description.innerHTML = conditionsDescription;
-        feel.innerHTML = 'Feels Like: ' + feels_like + '\u{00B0}C';
+        description.innerHTML = conditionsDescription.toUpperCase();
+        feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}C';
         if(country.results[0].locations[0].adminArea1 == 'US'){
             cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea4}, ${country.results[0].locations[0].adminArea3}<h1>`;
         } else {
@@ -215,8 +215,8 @@ export async function getWeatherPreload(pos) {
         };
         hourlyLabel.innerHTML = `<h2>12 Hour Forecast<h2>`;
         fiveDayLabel.innerHTML = `<h2>5 Day Outlook</h2>`;
-        sunrise.innerHTML = 'Sunrise: ' + sunUp;
-        sunset.innerHTML = 'Sunset: ' + sunDown;
+        sunrise.innerHTML = 'SUNRISE: ' + sunUp;
+        sunset.innerHTML = 'SUNSET: ' + sunDown;
         UI.classList.remove('hidden');
         for (let i = 0; i < UI.children.length; i++) {
             let child = UI.children[i];

@@ -17,7 +17,7 @@ body {
     text-align: center;
     overflow: hidden;
     font-size: 1.2rem;
-    color: #ddd;
+    color: white;
 }
 
 .bg-img {
@@ -37,7 +37,9 @@ body {
     grid-template-rows: auto;
     grid-template-areas: 
     "MI loader loader search"
-    "snapshot cityname cityname atmospheric"
+    ". cityname cityname ."
+    ". curr-icon snapshot ."
+    "atmospheric atmospheric atmospheric atmospheric"
     ". fivedaytitle fivedaytitle ."
     "fiveday fiveday fiveday fiveday"
     ". hourlytitle hourlytitle ."
@@ -55,6 +57,16 @@ body {
     margin: 0;
 }
 
+#current-icon {
+    grid-area: curr-icon;
+    display: inline-block;
+    justify-self: end;
+    align-self: center;
+    min-width: none;
+    width: 13rem;
+    max-height: fit-content;
+}
+
 #search {
     grid-area: search;
     align-items: stretch;
@@ -69,38 +81,29 @@ body {
 
 #snapshot {
     grid-area: snapshot;
-    display: grid;
+    display: inline-block;
     text-align: center;
-    align-items: center;
-    justify-items: center;
-    margin-left: 5rem;
-    margin-top: 5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border: solid black 1px;
-    border-radius: 0.5rem;
-    font-size: 1.5rem;
-    background-color: rgba(183, 177, 177, 0.5);
+    align-self: start;
+    justify-items: left;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    max-height: fit-content;
 }
 
 #current-temp {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    justify-self: center;
 }
 
 #atmospheric {
     grid-area: atmospheric;
-    display: grid;
-    text-align: center;
+    display: flex;
     align-items: center;
-    justify-items: center;
-    margin-right: 5rem;
-    margin-top: 5rem;
+    justify-content: center;
     margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border: solid black 1px;
-    border-radius: 0.5rem;
-    font-size: 1.5rem;
-    background-color: rgba(183, 177, 177, 0.5);
+    font-size: 1.2rem;
+    max-height: fit-content;
 }
 
 #hourly {
@@ -166,10 +169,18 @@ body {
   }
 
 @media screen and (max-width:350px) {
+    body {
+        width: 100%;
+        height: auto;
+    }
+
     #fiveday {
         font-size: 1rem;
-        margin: .75rem;
+        margin: .5rem;
+        width: 100%;
+        height: auto;
     }
+
     #hourly {
         font-size: 66%;
         margin: 0;
