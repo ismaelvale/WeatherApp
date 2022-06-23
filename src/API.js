@@ -146,9 +146,9 @@ export async function getWeatherImperial() {
         image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}F';
         description.innerHTML = conditionsDescription;
-        feel.innerHTML = 'Feels Like: ' + feels_like + '\u{00B0}F';
-        sunrise.innerHTML = 'Sunrise: ' + sunUp;
-        sunset.innerHTML = 'Sunset: ' + sunDown;
+        feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}F';
+        sunrise.innerHTML = 'SUNRISE: ' + sunUp;
+        sunset.innerHTML = 'SUNSET: ' + sunDown;
         UI.classList.remove('hidden');
         for (let i = 0; i < UI.children.length; i++) {
             let child = UI.children[i];
@@ -277,7 +277,7 @@ export async function imperialPreLoad(pos) {
         image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}F';
         description.innerHTML = conditionsDescription;
-        feel.innerHTML = 'Feels Like: ' + feels_like + '\u{00B0}F';
+        feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}F';
         if(country.results[0].locations[0].adminArea1 == 'US'){
             cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea4}, ${country.results[0].locations[0].adminArea3}<h1>`;
         } else {
@@ -285,8 +285,8 @@ export async function imperialPreLoad(pos) {
         };
         hourlyLabel.innerHTML = `<h2>12 Hour Forecast<h2>`;
         fiveDayLabel.innerHTML = `<h2>5 Day Outlook</h2>`;
-        sunrise.innerHTML = 'Sunrise: ' + sunUp;
-        sunset.innerHTML = 'Sunset: ' + sunDown;
+        sunrise.innerHTML = 'SUNRISE: ' + sunUp;
+        sunset.innerHTML = 'SUNSET: ' + sunDown;
         UI.classList.remove('hidden');
         for (let i = 0; i < UI.children.length; i++) {
             let child = UI.children[i];

@@ -41,7 +41,7 @@ body {
     ". curr-icon snapshot ."
     "atmospheric atmospheric atmospheric atmospheric"
     ". fivedaytitle fivedaytitle ."
-    "fiveday fiveday fiveday fiveday"
+    ". fiveday fiveday ."
     ". hourlytitle hourlytitle ."
     "hourly hourly hourly hourly"
     ". footer footer .";
@@ -108,13 +108,27 @@ body {
 
 #hourly {
     grid-area: hourly;
-    display: flex;
-    justify-content: space-evenly;
-    border: solid black 1px;
-    border-radius: 0.5rem;
+    display: inline-flex;
     font-size: 1.2rem;
-    background-color: rgba(183, 177, 177, 0.5);
+    gap: .5rem;
     overflow: auto;
+    justify-self: center;
+    background: rgba(165, 165, 165, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hour {
+    display: inline-block;
+    padding: .2rem;
+    text-align: center;
+    max-width: 5rem;
+    align-self: start;
+}
+
+span.hour img {
+    max-width: 5rem;
 }
 
 #fiveday {
@@ -122,10 +136,12 @@ body {
     display: flex;
     justify-content: space-around;
     margin: .5rem;
-    border: solid black 1px;
-    border-radius: 0.5rem;
+    padding: .5rem;
     font-size: 1.2rem;
-    background-color: rgba(183, 177, 177, 0.5);
+    background: rgba(165, 165, 165, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 #fiveday_title {
@@ -135,6 +151,7 @@ body {
 #hourly_title {
     grid-area: hourlytitle;
     margin-top: .5rem;
+    margin-bottom: .2rem;
 }
 
 .footer {
