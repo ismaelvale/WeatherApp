@@ -26,7 +26,7 @@ export async function getWeatherMetric() {
         }
         hourlyLabel.innerHTML = `<h2>12 Hour Forecast<h2>`;
         fiveDayLabel.innerHTML = `<h2>5 Day Outlook</h2>`;
-        const geoCode = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q='${city.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
+        const geoCode = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q='${city.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
         const coordinates = await geoCode.json();
         const lat = await coordinates[0].lat;
         const lon = await coordinates[0].lon;
@@ -46,7 +46,7 @@ export async function getWeatherMetric() {
             const iconID = entry.weather[0].icon;
             const hourlyDesc = entry.weather[0].description;
             const hourlyTemp = (entry.temp).toFixed(0) + '\u{00B0}C';
-            span.innerHTML=`<h3>`+time+`</h3><img src='http://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
+            span.innerHTML=`<h3>`+time+`</h3><img src='https://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
             span.classList.add('hour');
             hourly.appendChild(span);
         });
@@ -59,7 +59,7 @@ export async function getWeatherMetric() {
             const dailyDesc = entry.weather[0].description;
             const dailyTempMax = (entry.temp.max).toFixed(0) + '\u{00B0}C';
             const dailyTempMin = (entry.temp.min).toFixed(0) + '\u{00B0}C';
-            spanDay.innerHTML=`<h3>`+day+`</h3><img src='http://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
+            spanDay.innerHTML=`<h3>`+day+`</h3><img src='https://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
             spanDay.classList.add('day');
             fiveDay.appendChild(spanDay);
         });
@@ -70,7 +70,7 @@ export async function getWeatherMetric() {
         } else {
             cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea3}, ${country.results[0].locations[0].adminArea1}<h1>`;
         };
-        image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
+        image.src = await `https://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}C';
         description.innerHTML = conditionsDescription.toUpperCase();
         feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}C';
@@ -99,7 +99,7 @@ export async function getWeatherImperial() {
         }
         hourlyLabel.innerHTML = `<h2>12 Hour Forecast<h2>`;
         fiveDayLabel.innerHTML = `<h2>5 Day Outlook</h2>`;
-        const geoCode = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q='${city.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
+        const geoCode = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q='${city.value}'&appid=6fec97fdb872df436338b0085f799e9c`, {mode:'cors'});
         const coordinates = await geoCode.json();
         const lat = await coordinates[0].lat;
         const lon = await coordinates[0].lon;
@@ -119,7 +119,7 @@ export async function getWeatherImperial() {
             const iconID = entry.weather[0].icon;
             const hourlyDesc = entry.weather[0].description;
             const hourlyTemp = (entry.temp).toFixed(0) + '\u{00B0}F';
-            span.innerHTML=`<h3>`+time+`</h3><img src='http://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
+            span.innerHTML=`<h3>`+time+`</h3><img src='https://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
             span.classList.add('hour');
             hourly.appendChild(span);
         });
@@ -132,7 +132,7 @@ export async function getWeatherImperial() {
             const dailyDesc = entry.weather[0].description;
             const dailyTempMax = (entry.temp.max).toFixed(0) + '\u{00B0}F';
             const dailyTempMin = (entry.temp.min).toFixed(0) + '\u{00B0}F';
-            spanDay.innerHTML=`<h3>`+day+`</h3><img src='http://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
+            spanDay.innerHTML=`<h3>`+day+`</h3><img src='https://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
             spanDay.classList.add('day');
             fiveDay.appendChild(spanDay);
         });
@@ -143,7 +143,7 @@ export async function getWeatherImperial() {
         } else {
             cityTitle.innerHTML = `<h1>${country.results[0].locations[0].adminArea3}, ${country.results[0].locations[0].adminArea1}<h1>`;
         };
-        image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
+        image.src = await `https://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}F';
         description.innerHTML = conditionsDescription;
         feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}F';
@@ -188,7 +188,7 @@ export async function getWeatherPreload(pos) {
             const iconID = entry.weather[0].icon;
             const hourlyDesc = entry.weather[0].description;
             const hourlyTemp = (entry.temp).toFixed(0) + '\u{00B0}C';
-            span.innerHTML=`<h3>`+time+`</h3><img src='http://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
+            span.innerHTML=`<h3>`+time+`</h3><img src='https://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
             span.classList.add('hour');
             hourly.appendChild(span);
         });
@@ -200,11 +200,11 @@ export async function getWeatherPreload(pos) {
             const dailyDesc = entry.weather[0].description;
             const dailyTempMax = (entry.temp.max).toFixed(0) + '\u{00B0}C';
             const dailyTempMin = (entry.temp.min).toFixed(0) + '\u{00B0}C';
-            spanDay.innerHTML=`<h3>`+day+`</h3><img src='http://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
+            spanDay.innerHTML=`<h3>`+day+`</h3><img src='https://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
             spanDay.classList.add('day');
             fiveDay.appendChild(spanDay);
         });
-        image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
+        image.src = await `https://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}C';
         description.innerHTML = conditionsDescription.toUpperCase();
         feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}C';
@@ -257,7 +257,7 @@ export async function imperialPreLoad(pos) {
             const iconID = entry.weather[0].icon;
             const hourlyDesc = entry.weather[0].description;
             const hourlyTemp = (entry.temp).toFixed(0) + '\u{00B0}F';
-            span.innerHTML=`<h3>`+time+`</h3><img src='http://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
+            span.innerHTML=`<h3>`+time+`</h3><img src='https://openweathermap.org/img/wn/`+iconID+`@2x.png' alt=`+hourlyDesc+`> <p>`+hourlyTemp+`</p> <p>`+hourlyDesc+`</p>`;
             span.classList.add('hour');
             hourly.appendChild(span);
         });
@@ -270,11 +270,11 @@ export async function imperialPreLoad(pos) {
             const dailyDesc = entry.weather[0].description;
             const dailyTempMax = (entry.temp.max).toFixed(0) + '\u{00B0}F';
             const dailyTempMin = (entry.temp.min).toFixed(0) + '\u{00B0}F';
-            spanDay.innerHTML=`<h3>`+day+`</h3><img src='http://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
+            spanDay.innerHTML=`<h3>`+day+`</h3><img src='https://openweathermap.org/img/wn/`+dailyIconID+`@2x.png' alt=`+dailyDesc+`> <p>High: `+dailyTempMax+`</p> <p>Lo: `+dailyTempMin+`</p> <p>`+dailyDesc+`</p>`;
             spanDay.classList.add('day');
             fiveDay.appendChild(spanDay);
         });
-        image.src = await `http://openweathermap.org/img/wn/${icon}@2x.png`;
+        image.src = await `https://openweathermap.org/img/wn/${icon}@2x.png`;
         temp.innerHTML = currentTemp + '\u{00B0}F';
         description.innerHTML = conditionsDescription;
         feel.innerHTML = 'FEELS LIKE: ' + feels_like + '\u{00B0}F';
