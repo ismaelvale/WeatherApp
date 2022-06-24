@@ -24,8 +24,12 @@ body {
     display: block;
     overflow: hidden;
     z-index: -1;
-    max-width: 100%;
-    height: 100%;
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
 }
 
 #UI {
@@ -206,5 +210,11 @@ span.hour img {
     }
     span.hour img {
         max-width: 40px;
+    }
+  }
+  @media screen and (max-width: 1024px) { 
+    img.bg {
+      left: 50%;
+      margin-left: -512px; 
     }
   }
