@@ -16,6 +16,8 @@ body {
     text-align: center;
     font-size: 1.2rem;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .bg-img {
@@ -32,6 +34,7 @@ body {
 }
 
 #UI {
+    flex: 1;
     display: grid;
     position: relative;
     grid-template-columns: repeat(4, 1fr);
@@ -44,8 +47,7 @@ body {
     ". fivedaytitle fivedaytitle ."
     ". fiveday fiveday ."
     ". hourlytitle hourlytitle ."
-    "hourly hourly hourly hourly"
-    ". footer footer .";
+    "hourly hourly hourly hourly";
     min-width: 320px;
 }
 
@@ -132,7 +134,6 @@ span.hour img {
     grid-area: fiveday;
     display: inline-flex;
     justify-content: space-around;
-    margin: .5rem;
     padding: .5rem;
     font-size: 1.2rem;
     background: rgba(165, 165, 165, 0.1);
@@ -152,14 +153,8 @@ span.hour img {
 }
 
 .footer {
-    grid-area: footer;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    max-width: 100%;
+    flex-shrink: 0;
+    margin-top: auto;
     font-size: .8rem;
 }
 
